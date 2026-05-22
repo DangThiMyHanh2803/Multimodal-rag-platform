@@ -41,6 +41,8 @@ interface Conversation {
 interface ChatPageProps {
   workspaceId?: string;
   workspaceName?: string;
+  onNavigateLogin?: () => void;
+  onNavigateDashboard?: () => void;
 }
 
 // ─── Seed data ────────────────────────────────────────────────────────────────
@@ -91,21 +93,14 @@ const QUICK_SUGGESTIONS = [
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
 function FileTypeIcon({ type }: { type: DocFile["type"] }) {
-  const map: Record<DocFile["type"], [string, string]> = {
-    pdf:   ["📄", `rgba(248,113,113,.15)`],
-    docx:  ["📝", `rgba(79,124,255,.15)`],
-    audio: ["🎵", `rgba(245,158,11,.15)`],
-    image: ["🖼️", `rgba(45,212,191,.15)`],
-    pptx:  ["📊", `rgba(167,139,250,.15)`],
+  const map: Record<DocFile["type"], string> = {
+    pdf:   "/icon/icon-pdf.svg",
+    docx:  "/icon/icon-docx.svg",
+    audio: "/icon/icon-audio.svg",
+    image: "/icon/icon-image.svg",
+    pptx:  "/icon/icon-pptx.svg",
   };
-  const [icon, bg] = map[type];
-  return (
-    <div style={{
-      width: 28, height: 28, borderRadius: 7, background: bg,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: 13, flexShrink: 0,
-    }}>{icon}</div>
-  );
+  return <img src={map[type]} alt="" style={{ width: 38, height: 38, objectFit: "contain", flexShrink: 0 }} />;
 }
 
 function RagasRow({ ragas }: { ragas: NonNullable<Message["ragas"]> }) {
@@ -200,12 +195,10 @@ function MessageBubble({ msg }: { msg: Message }) {
 
   return (
     <div style={{ display: "flex", gap: 10, maxWidth: "88%" }}>
-      <div style={{
-        width: 30, height: 30, borderRadius: "50%",
-        background: `linear-gradient(135deg, ${C.accent}, ${C.teal})`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 14, flexShrink: 0, alignSelf: "flex-start", marginTop: 2,
-      }}>🧠</div>
+      <img src="/bot.png" alt="bot" style={{
+        width: 30, height: 30, borderRadius: "50%", flexShrink: 0,
+        alignSelf: "flex-start", marginTop: 2, objectFit: "contain",
+      }} />
       <div style={{ flex: 1 }}>
         <div style={{
           background: C.surfaceHigh, border: `1px solid ${C.border}`,
@@ -235,11 +228,9 @@ function MessageBubble({ msg }: { msg: Message }) {
 function TypingIndicator() {
   return (
     <div style={{ display: "flex", gap: 10 }}>
-      <div style={{
-        width: 30, height: 30, borderRadius: "50%",
-        background: `linear-gradient(135deg, ${C.accent}, ${C.teal})`,
-        display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14,
-      }}>🧠</div>
+      <img src="/bot.png" alt="bot" style={{
+        width: 30, height: 30, borderRadius: "50%", objectFit: "contain", flexShrink: 0,
+      }} />
       <div style={{
         background: C.surfaceHigh, border: `1px solid ${C.border}`,
         borderRadius: "4px 14px 14px 14px", padding: "14px 18px",
@@ -257,7 +248,7 @@ function TypingIndicator() {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function ChatPage({ workspaceName = "Đề tài môi trường" }: ChatPageProps) {
+export default function ChatPage({ workspaceName = "Đề tài môi trường", onNavigateLogin, onNavigateDashboard }: ChatPageProps) {
   const [files, setFiles]               = useState<DocFile[]>(SEED_FILES);
   const [conversations, setConversations] = useState<Conversation[]>(SEED_CONVERSATIONS);
   const [activeConvId, setActiveConvId] = useState<string>("c1");
@@ -331,6 +322,33 @@ export default function ChatPage({ workspaceName = "Đề tài môi trường" }
   const toggleFile = (id: string) =>
     setFiles(prev => prev.map(f => f.id === id ? { ...f, selected: !f.selected } : f));
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = Array.from(e.target.files ?? []);
+    if (!picked.length) return;
+    const newFiles: DocFile[] = picked.map(f => {
+      const ext = f.name.split(".").pop()?.toLowerCase() ?? "";
+      const typeMap: Record<string, DocFile["type"]> = {
+        pdf: "pdf", docx: "docx", doc: "docx",
+        mp3: "audio", wav: "audio", m4a: "audio",
+        jpg: "image", jpeg: "image", png: "image",
+        pptx: "pptx", ppt: "pptx",
+      };
+      return {
+        id: `f${Date.now()}-${Math.random()}`,
+        name: f.name,
+        type: typeMap[ext] ?? "pdf",
+        size: f.size > 1048576 ? `${(f.size / 1048576).toFixed(1)} MB` : `${Math.round(f.size / 1024)} KB`,
+        selected: true,
+        status: "indexing",
+      };
+    });
+    setFiles(prev => [...prev, ...newFiles]);
+    e.target.value = "";
+    // TODO: gọi POST /api/files/upload rồi cập nhật status → "ready"
+  };
+
   const formatRelTime = (d: Date) => {
     const diff = Date.now() - d.getTime();
     if (diff < 3600000) return `${Math.floor(diff / 60000)} phút trước`;
@@ -363,9 +381,10 @@ export default function ChatPage({ workspaceName = "Đề tài môi trường" }
               background: "none", cursor: "pointer", borderRadius: "7px 7px 0 0",
               color: leftPanel === tab ? C.accent : C.textMuted,
               borderBottom: `2px solid ${leftPanel === tab ? C.accent : "transparent"}`,
-              transition: "all .15s",
+              transition: "all .15s", display: "flex", alignItems: "center", justifyContent: "center",
             }}>
-              {tab === "files" ? `📄 Tài liệu` : `💬 Lịch sử`}
+              <img src={tab === "files" ? "/icon/doc.png" : "/icon/chat.png"} alt="" style={{ width: 24, height: 24, objectFit: "contain", marginRight: 5, opacity: leftPanel === tab ? 1 : 0.5 }} />
+              {tab === "files" ? "Tài liệu" : "Lịch sử"}
             </button>
           ))}
         </div>
@@ -414,10 +433,19 @@ export default function ChatPage({ workspaceName = "Đề tài môi trường" }
               ))}
             </div>
             {/* Upload shortcut */}
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept=".pdf,.docx,.doc,.mp3,.wav,.m4a,.jpg,.jpeg,.png,.pptx,.ppt"
+              style={{ display: "none" }}
+              onChange={handleUpload}
+            />
             <div style={{
               margin: 8, border: `1.5px dashed ${C.border}`, borderRadius: 10,
               padding: "12px", textAlign: "center", cursor: "pointer",
             }}
+              onClick={() => fileInputRef.current?.click()}
               onMouseEnter={e => { e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.background = C.accentGlow; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = "transparent"; }}>
               <div style={{ fontSize: 18, marginBottom: 3 }}>+</div>
@@ -467,14 +495,23 @@ export default function ChatPage({ workspaceName = "Đề tài môi trường" }
           height: 52, borderBottom: `1px solid ${C.border}`, background: C.surface,
           display: "flex", alignItems: "center", padding: "0 20px", gap: 12,
         }}>
+          <img src="/logo2.png" alt="logo" style={{ width: 28, height: 28, objectFit: "contain", flexShrink: 0 }} />
           <div style={{ fontSize: 14, fontWeight: 500, color: C.text }}>{workspaceName}</div>
           <div style={{ fontSize: 12, color: C.textMuted }}>·</div>
           <div style={{ fontSize: 12, color: C.textSub }}>
             {selectedCount} tài liệu · {messages.length - 1} tin nhắn
           </div>
           <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
-            <Btn variant="ghost" style={{ fontSize: 12, padding: "5px 12px" }}>📤 Xuất chat</Btn>
+            <Btn variant="ghost" style={{ fontSize: 12, padding: "5px 12px", display: "flex", alignItems: "center", gap: 5 }}>
+              <img src="/icon/export.png" alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />
+              Xuất chat
+            </Btn>
             <Btn variant="teal"  style={{ fontSize: 12, padding: "5px 12px" }} onClick={newConversation}>+ Chat mới</Btn>
+            <Btn variant="ghost" style={{ fontSize: 12, padding: "5px 12px", display: "flex", alignItems: "center", gap: 5 }} onClick={onNavigateDashboard}>
+              <img src="/icon/dashboard.png" alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />
+              Dashboard
+            </Btn>
+            <Btn variant="primary" style={{ fontSize: 12, padding: "5px 12px" }} onClick={onNavigateLogin}>Đăng nhập</Btn>
           </div>
         </div>
 
@@ -580,11 +617,11 @@ export default function ChatPage({ workspaceName = "Đề tài môi trường" }
                 style={{
                   fontSize: 11, color: C.textMuted, background: C.surfaceHigh,
                   border: `1px solid ${C.border}`, borderRadius: 6, padding: "3px 10px",
-                  cursor: "pointer", transition: "all .15s",
+                  cursor: "pointer", transition: "all .15s", display: "flex", alignItems: "center",
                 }}
                 onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
                 onMouseLeave={e => { e.currentTarget.style.color = C.textMuted; e.currentTarget.style.borderColor = C.border; }}>
-                💡 {s}
+                <img src="/icon/light.png" alt="" style={{ width: 25, height: 25, objectFit: "contain", marginRight: 4 }} />{s}
               </button>
             ))}
           </div>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <style>
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes sp { 0%,100%{opacity:0;transform:scale(0.5)} 50%{opacity:1;transform:scale(1)} }
+    .fg { animation: float 2.3s ease-in-out 0.3s infinite; transform-origin: 100px 100px; }
+    .s0 { animation: sp 2.1s ease-in-out 0.0s infinite; transform-origin: 162px 28px; }
+    .s1 { animation: sp 2.1s ease-in-out 0.7s infinite; transform-origin: 34px 148px; }
+  </style>
+  <ellipse cx="100" cy="108" rx="88" ry="76" fill="#D6F5F0"/>
+  <g class="s0"><path d="M162 22l2.5 9 9 2.5-9 2.5-2.5 9-2.5-9-9-2.5 9-2.5z" fill="#F4C842"/></g>
+  <g class="s1"><path d="M34 142l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#4A9FD9"/></g>
+  <text x="34"  y="52"  font-size="14" font-family="sans-serif" fill="#F87272" opacity=".75">×</text>
+  <text x="160" y="172" font-size="14" font-family="sans-serif" fill="#F87272" opacity=".75">×</text>
+  <text x="158" y="64"  font-size="14" font-family="sans-serif" fill="#F4C842" opacity=".8">+</text>
+  <text x="36"  y="172" font-size="14" font-family="sans-serif" fill="#4A9FD9" opacity=".7">+</text>
+  <g class="fg">
+    <ellipse cx="101" cy="185" rx="38" ry="6" fill="#7DDDD1" opacity=".28"/>
+    <rect x="58" y="24" width="84" height="108" rx="9" fill="white" stroke="#2BAF9E" stroke-width="6"/>
+    <polygon points="112,24 142,54 112,54" fill="#A8F0E8" stroke="#2BAF9E" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="80" cy="70" r="10" fill="#F4C842"/>
+    <polygon points="62,128 88,82 114,128"  fill="#A8F0E8" stroke="#2BAF9E" stroke-width="3"/>
+    <polygon points="88,128 108,100 128,128" fill="#7DDDD1" stroke="#2BAF9E" stroke-width="3"/>
+    <rect x="60" y="108" width="40" height="14" rx="5" fill="#2BAF9E"/>
+    <text x="80" y="119" text-anchor="middle" font-size="9" font-family="sans-serif" fill="white" font-weight="700">IMG</text>
+  </g>
+</svg>

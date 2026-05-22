@@ -87,7 +87,7 @@ export function LogoMark({ size = 40 }: { size?: number }) {
     <img
       src="/logo2.png"
       alt="logo"
-      style={{ width: size, height: size, borderRadius: size * 0.28, flexShrink: 0, objectFit: "contain" }}
+      style={{ width: size, height: size, flexShrink: 0, objectFit: "contain" }}
     />
   );
 }

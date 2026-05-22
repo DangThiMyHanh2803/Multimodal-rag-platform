@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <style>
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes sp { 0%,100%{opacity:0;transform:scale(0.5)} 50%{opacity:1;transform:scale(1)} }
+    .fg { animation: float 2.3s ease-in-out 0.6s infinite; transform-origin: 100px 100px; }
+    .s0 { animation: sp 2.1s ease-in-out 0.0s infinite; transform-origin: 162px 28px; }
+    .s1 { animation: sp 2.1s ease-in-out 0.7s infinite; transform-origin: 34px 148px; }
+  </style>
+
+  <!-- blob -->
+  <ellipse cx="100" cy="108" rx="88" ry="76" fill="#FFF0E0"/>
+
+  <!-- sparkles -->
+  <g class="s0"><path d="M162 22l2.5 9 9 2.5-9 2.5-2.5 9-2.5-9-9-2.5 9-2.5z" fill="#F4C842"/></g>
+  <g class="s1"><path d="M34 142l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#7EC8F7"/></g>
+  <text x="34"  y="52"  font-size="14" font-family="sans-serif" fill="#E8600A" opacity=".7">×</text>
+  <text x="160" y="172" font-size="14" font-family="sans-serif" fill="#E8600A" opacity=".7">×</text>
+  <text x="158" y="64"  font-size="14" font-family="sans-serif" fill="#F4C842" opacity=".8">+</text>
+  <text x="36"  y="172" font-size="14" font-family="sans-serif" fill="#7EC8F7" opacity=".7">+</text>
+
+  <!-- floating card -->
+  <g class="fg">
+    <ellipse cx="101" cy="185" rx="38" ry="6" fill="#E8600A" opacity=".22"/>
+    <rect x="58" y="24" width="84" height="108" rx="9" fill="white" stroke="#C04E00" stroke-width="6"/>
+    <polygon points="112,24 142,54 112,54" fill="#FFD0A8" stroke="#C04E00" stroke-width="5" stroke-linejoin="round"/>
+    <text x="100" y="90" text-anchor="middle" font-size="36" font-family="sans-serif" fill="#C04E00" font-weight="700">P</text>
+    <!-- slide thumbnail -->
+    <rect x="68" y="96" width="56" height="34" rx="4" fill="#FFF0E0" stroke="#E8600A" stroke-width="2"/>
+    <rect x="74"  y="114" width="6" height="14" rx="2" fill="#FFB347"/>
+    <rect x="84"  y="108" width="6" height="20" rx="2" fill="#C04E00"/>
+    <rect x="94"  y="111" width="6" height="17" rx="2" fill="#FFB347"/>
+    <rect x="104" y="104" width="6" height="24" rx="2" fill="#C04E00"/>
+    <rect x="114" y="108" width="6" height="20" rx="2" fill="#FFB347"/>
+    <rect x="60" y="108" width="54" height="14" rx="5" fill="#C04E00"/>
+    <text x="87" y="119" text-anchor="middle" font-size="8.5" font-family="sans-serif" fill="white" font-weight="700">PowerPoint</text>
+  </g>
+</svg>
