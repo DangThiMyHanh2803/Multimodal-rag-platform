@@ -1,3 +1,47 @@
-fastapi
-uvicorn
-python-dotenv
+# Web framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+httpx>=0.27.0
+
+# Database
+sqlalchemy>=2.0.0
+aiosqlite>=0.20.0
+
+# Vector database
+chromadb>=0.5.0
+
+# Embedding & Reranker (bge-m3, bge-reranker-v2-m3)
+FlagEmbedding>=1.2.0
+torch>=2.0.0
+
+# LangChain
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-openai>=0.2.0
+langchain-text-splitters>=0.3.0
+
+# LLM APIs
+openai>=1.0.0
+anthropic>=0.30.0
+
+# Document parsing
+PyMuPDF>=1.24.0
+pdfplumber>=0.11.0        # parse PDF chất lượng cao, hỗ trợ bảng biểu
+python-docx>=1.1.0
+Pillow>=10.0.0
+
+# Embedding / Reranker (thay thế / bổ sung FlagEmbedding)
+sentence-transformers>=3.0.0   # load bge-m3 và bge-reranker-v2-m3
+
+# Audio (Whisper)
+openai-whisper>=20231117
+
+# Auth
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# Evaluation
+ragas>=0.1.0
