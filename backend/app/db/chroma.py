@@ -7,12 +7,6 @@ các embedding chunk của tài liệu.
 Vai trò trong pipeline:
     file_service  →  embedding_service  →  [chroma.py]  →  rag_service
                                               lưu vector       đọc vector
-
-ChromaDB hoạt động theo mô hình:
-    Collection  : tương tự "bảng" trong SQL, chứa nhiều document
-    Document    : một chunk văn bản + vector embedding của nó
-    Metadata    : thông tin kèm theo (file_id, file_name, page_number, ...)
-    ID          : chuỗi định danh duy nhất cho mỗi chunk
 """
 
 from __future__ import annotations
@@ -23,15 +17,16 @@ from typing import Optional
 
 import chromadb
 from chromadb import Collection
+from chromadb.config import Settings as ChromaSettings
 from dotenv import load_dotenv
 
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-# ── Cấu hình từ .env ──────────────────────────────────────────────────────────
-CHROMA_HOST       = os.getenv("CHROMA_HOST", "localhost")
-CHROMA_PORT       = int(os.getenv("CHROMA_PORT", "8001"))
-CHROMA_COLLECTION = os.getenv("CHROMA_COLLECTION", "rag_documents")
+CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
+CHROMA_MODE        = os.getenv("CHROMA_MODE", "local")   # "local" | "server"
+CHROMA_HOST        = os.getenv("CHROMA_HOST", "localhost")
+CHROMA_PORT        = int(os.getenv("CHROMA_PORT", "8001"))
 
 
 # =============================================================================
@@ -39,50 +34,43 @@ CHROMA_COLLECTION = os.getenv("CHROMA_COLLECTION", "rag_documents")
 # =============================================================================
 
 class ChromaClientManager:
-    """
-    Quản lý kết nối ChromaDB theo Singleton pattern.
-    Đảm bảo chỉ có một kết nối duy nhất trong toàn bộ ứng dụng.
-    """
-    _client: Optional[chromadb.HttpClient] = None
-    _collection: Optional[Collection] = None
+    _client: Optional[chromadb.ClientAPI] = None
 
     @classmethod
-    def get_client(cls) -> chromadb.HttpClient:
-        """Trả về ChromaDB HTTP client (tạo mới nếu chưa có)."""
+    def get_client(cls) -> chromadb.ClientAPI:
         if cls._client is None:
-            logger.info("Kết nối ChromaDB tại %s:%s", CHROMA_HOST, CHROMA_PORT)
-            cls._client = chromadb.HttpClient(
-                host=CHROMA_HOST,
-                port=CHROMA_PORT,
-            )
+            if CHROMA_MODE == "local":
+                cls._client = chromadb.PersistentClient(
+                    path=CHROMA_PERSIST_DIR,
+                    settings=ChromaSettings(anonymized_telemetry=False),
+                )
+                logger.info("ChromaDB local mode: %s", CHROMA_PERSIST_DIR)
+            else:
+                cls._client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+                logger.info("ChromaDB server: %s:%s", CHROMA_HOST, CHROMA_PORT)
         return cls._client
 
     @classmethod
-    def get_collection(cls) -> Collection:
-        """
-        Trả về collection chính (tạo mới nếu chưa tồn tại).
+    def get_collection(cls, name: str = "rag_documents") -> Collection:
+        client = cls.get_client()
+        collection = client.get_or_create_collection(
+            name=name,
+            metadata={"hnsw:space": "cosine"},
+        )
+        logger.info("Collection '%s' sẵn sàng (%d chunks)", name, collection.count())
+        return collection
 
-        Dùng cosine similarity — phù hợp nhất cho embedding văn bản
-        vì đo góc giữa các vector, không bị ảnh hưởng bởi độ dài vector.
-        """
-        if cls._collection is None:
-            client = cls.get_client()
-            cls._collection = client.get_or_create_collection(
-                name=CHROMA_COLLECTION,
-                metadata={"hnsw:space": "cosine"},
-            )
-            logger.info("Collection '%s' sẵn sàng (%d chunks)",
-                        CHROMA_COLLECTION, cls._collection.count())
-        return cls._collection
+    @classmethod
+    def reset(cls) -> None:
+        cls._client = None
 
 
 # =============================================================================
-# Hàm thao tác ChromaDB — dùng từ embedding_service và rag_service
+# Hàm thao tác ChromaDB
 # =============================================================================
 
-def get_collection() -> Collection:
-    """Lấy collection ChromaDB (shortcut cho các module khác import)."""
-    return ChromaClientManager.get_collection()
+def get_collection(workspace_id: str = "default") -> Collection:
+    return ChromaClientManager.get_collection(f"workspace_{workspace_id}")
 
 
 def upsert_chunks(
@@ -90,20 +78,10 @@ def upsert_chunks(
     embeddings: list[list[float]],
     documents: list[str],
     metadatas: list[dict],
+    workspace_id: str = "default",
 ) -> None:
-    """
-    Lưu (hoặc cập nhật) các chunk vào ChromaDB.
-
-    Dùng upsert thay vì add để tránh lỗi trùng ID khi upload lại file.
-    Nếu chunk_id đã tồn tại → cập nhật; nếu chưa có → thêm mới.
-
-    Args:
-        ids        : Danh sách ID duy nhất cho từng chunk
-        embeddings : Danh sách vector embedding (mỗi vector ~ 1024 chiều với bge-m3)
-        documents  : Danh sách text gốc của từng chunk
-        metadatas  : Danh sách metadata kèm theo (file_id, file_name, page_number, ...)
-    """
-    collection = get_collection()
+    """Lưu hoặc cập nhật chunks vào ChromaDB."""
+    collection = get_collection(workspace_id)
     try:
         collection.upsert(
             ids=ids,
@@ -111,58 +89,80 @@ def upsert_chunks(
             documents=documents,
             metadatas=metadatas,
         )
-        logger.info("Đã lưu %d chunks vào ChromaDB", len(ids))
+        logger.info("Đã lưu %d chunks vào workspace '%s'", len(ids), workspace_id)
     except Exception as exc:
         logger.error("Lỗi upsert ChromaDB: %s", exc)
         raise
 
 
-def delete_chunks_by_file(file_id: str) -> int:
-    """
-    Xóa tất cả chunk thuộc về một file.
+def query_chunks(
+    query_embedding: list[float],
+    workspace_id: str = "default",
+    top_k: int = 10,
+    file_ids: list[str] | None = None,
+) -> list[dict]:
+    """Tìm top-k chunks gần nhất với query embedding."""
+    collection = get_collection(workspace_id)
 
-    Dùng khi người dùng xóa file hoặc upload lại file (để tránh chunk cũ
-    lẫn với chunk mới).
-
-    Args:
-        file_id: ID của file cần xóa chunk
-
-    Returns:
-        Số chunk đã xóa
-    """
-    collection = get_collection()
-    try:
-        # Tìm tất cả chunk của file này trước
-        results = collection.get(
-            where={"file_id": {"$eq": file_id}},
-            include=[],          # chỉ cần IDs, không cần document/embedding
+    where_filter = None
+    if file_ids:
+        where_filter = (
+            {"file_id": {"$eq": file_ids[0]}}
+            if len(file_ids) == 1
+            else {"file_id": {"$in": file_ids}}
         )
-        chunk_ids = results.get("ids", [])
-        if chunk_ids:
-            collection.delete(ids=chunk_ids)
-            logger.info("Đã xóa %d chunks của file_id='%s'", len(chunk_ids), file_id)
-        return len(chunk_ids)
-    except Exception as exc:
-        logger.error("Lỗi xóa chunk file_id='%s': %s", file_id, exc)
-        raise
+
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=min(top_k, collection.count() or 1),
+        where=where_filter,
+        include=["documents", "metadatas", "distances"],
+    )
+
+    return [
+        {
+            "text": results["documents"][0][i],
+            "file_id": results["metadatas"][0][i].get("file_id", ""),
+            "file_name": results["metadatas"][0][i].get("file_name", ""),
+            "page_number": results["metadatas"][0][i].get("page_number", 0),
+            "score": 1 - results["distances"][0][i],
+        }
+        for i in range(len(results["documents"][0]))
+    ]
 
 
-def count_chunks_by_file(file_id: str) -> int:
-    """Đếm số chunk của một file — dùng cho API status."""
-    collection = get_collection()
+def delete_chunks_by_file(file_id: str, workspace_id: str = "default") -> int:
+    """Xóa tất cả chunk của một file."""
+    collection = get_collection(workspace_id)
     try:
         results = collection.get(
             where={"file_id": {"$eq": file_id}},
             include=[],
+        )
+        chunk_ids = results.get("ids", [])
+        if chunk_ids:
+            collection.delete(ids=chunk_ids)
+            logger.info("Đã xóa %d chunks của file '%s'", len(chunk_ids), file_id)
+        return len(chunk_ids)
+    except Exception as exc:
+        logger.error("Lỗi xóa chunk: %s", exc)
+        raise
+
+
+def count_chunks_by_file(file_id: str, workspace_id: str = "default") -> int:
+    """Đếm số chunk của một file."""
+    try:
+        results = get_collection(workspace_id).get(
+            where={"file_id": {"$eq": file_id}}, include=[]
         )
         return len(results.get("ids", []))
     except Exception:
         return 0
 
 
-def get_total_chunks() -> int:
-    """Tổng số chunk trong toàn bộ collection — dùng cho Dashboard."""
+def get_total_chunks(workspace_id: str = "default") -> int:
+    """Tổng số chunk trong workspace — dùng cho Dashboard."""
     try:
-        return get_collection().count()
+        return get_collection(workspace_id).count()
     except Exception:
         return 0

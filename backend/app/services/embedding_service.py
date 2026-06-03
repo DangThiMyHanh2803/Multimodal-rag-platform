@@ -156,6 +156,7 @@ class EmbeddingService:
         chunks: list["TextChunk"],
         file_id: str,
         file_name: str,
+        workspace_id: str = "default",
         replace_existing: bool = True,
     ) -> int:
         """
@@ -184,9 +185,9 @@ class EmbeddingService:
 
         # ── Bước 1: Xóa chunk cũ nếu cần ─────────────────────────────────────
         if replace_existing:
-            deleted = delete_chunks_by_file(file_id)
+            deleted = delete_chunks_by_file(file_id, workspace_id)
             if deleted > 0:
-                logger.info("Đã xóa %d chunk cũ của file '%s'", deleted, file_name)
+                logger.info("Deleted %d old chunks for file '%s'", deleted, file_name)
 
         # ── Bước 2: Encode tất cả chunk text ─────────────────────────────────
         texts = [chunk.text for chunk in chunks]
@@ -226,9 +227,9 @@ class EmbeddingService:
             })
 
         # Lưu batch vào ChromaDB
-        upsert_chunks(ids=ids, embeddings=embeddings, documents=documents, metadatas=metadatas)
+        upsert_chunks(ids=ids, embeddings=embeddings, documents=documents, metadatas=metadatas, workspace_id=workspace_id)
 
-        stored_count = count_chunks_by_file(file_id)
+        stored_count = count_chunks_by_file(file_id, workspace_id)
         logger.info(
             "Hoàn thành embedding '%s': %d chunks trong ChromaDB",
             file_name, stored_count,
