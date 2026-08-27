@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { C } from "../styles/theme";
 import { Btn, Badge } from "../components/ui";
+import { uploadFile, listFiles, deleteFile as deleteBackendFile } from "../services/fileService";
+import type { BackendFileItem } from "../services/fileService";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// ─── Types ───────────────────────────────────────────────────────────────────
 type FileStatus = "ready" | "uploading" | "indexing" | "error";
-type FileType   = "pdf" | "docx" | "pptx" | "audio" | "image" | "txt";
+type FileType   = "pdf" | "docx" | "pptx" | "audio" | "image" | "txt" | "md";
 type SortKey    = "name" | "size" | "date" | "status";
 
 interface DocFile {
@@ -22,21 +24,47 @@ interface DocFile {
   error?: string;
 }
 
-// ─── Seed data ────────────────────────────────────────────────────────────────
-const SEED_FILES: DocFile[] = [
-  { id: "f1",  name: "Giao_trinh_moi_truong.pdf",      type: "pdf",   size: 4404019,  pages: 312, chunkCount: 624, status: "ready",    uploadedAt: new Date("2025-05-10"), workspaceId: "ws1", workspaceName: "Đề tài môi trường" },
-  { id: "f2",  name: "Bai_giang_BOD_COD.pdf",          type: "pdf",   size: 1887437,  pages: 48,  chunkCount: 96,  status: "ready",    uploadedAt: new Date("2025-05-11"), workspaceId: "ws1", workspaceName: "Đề tài môi trường" },
-  { id: "f3",  name: "QCVN_40_2011_BTNMT.pdf",         type: "pdf",   size: 943718,   pages: 22,  chunkCount: 44,  status: "ready",    uploadedAt: new Date("2025-05-12"), workspaceId: "ws1", workspaceName: "Đề tài môi trường" },
-  { id: "f4",  name: "Ghi_am_bai_hoc_tuan3.mp3",       type: "audio", size: 18874368,              chunkCount: 142, status: "ready",    uploadedAt: new Date("2025-05-13"), workspaceId: "ws1", workspaceName: "Đề tài môi trường" },
-  { id: "f5",  name: "So_do_xu_ly_nuoc_thai.jpg",      type: "image", size: 1153434,              chunkCount: 8,   status: "ready",    uploadedAt: new Date("2025-05-14"), workspaceId: "ws1", workspaceName: "Đề tài môi trường" },
-  { id: "f6",  name: "Bao_cao_thi_nghiem_tuan2.docx",  type: "docx",  size: 2411725,  pages: 28,  chunkCount: 56,  status: "indexing", uploadedAt: new Date(),            workspaceId: "ws1", workspaceName: "Đề tài môi trường", progress: 62 },
-  { id: "f7",  name: "RAG_Survey_2024.pdf",             type: "pdf",   size: 3145728,  pages: 45,  chunkCount: 90,  status: "ready",    uploadedAt: new Date("2025-05-15"), workspaceId: "ws2", workspaceName: "Tiểu luận RAG" },
-  { id: "f8",  name: "VN-MTEB_preprint.pdf",            type: "pdf",   size: 1572864,  pages: 18,  chunkCount: 36,  status: "ready",    uploadedAt: new Date("2025-05-16"), workspaceId: "ws2", workspaceName: "Tiểu luận RAG" },
-  { id: "f9",  name: "Slide_thuyet_trinh.pptx",         type: "pptx",  size: 5242880,              chunkCount: 32,  status: "error",    uploadedAt: new Date("2025-05-17"), error: "Không thể đọc file — định dạng bị hỏng" },
-  { id: "f10", name: "Note_lab_hoa_nuoc.txt",           type: "txt",   size: 45056,    pages: 4,   chunkCount: 12,  status: "ready",    uploadedAt: new Date("2025-05-18") },
-];
-
 // ─── Helpers ─────────────────────────────────────────────────────────────────
+
+function mapExtensionToFileType(ext: string): FileType {
+  const typeMap: Record<string, FileType> = {
+    pdf: "pdf",
+    docx: "docx",
+    doc: "docx",
+    pptx: "pptx",
+    mp3: "audio",
+    m4a: "audio",
+    wav: "audio",
+    jpg: "image",
+    jpeg: "image",
+    png: "image",
+    webp: "image",
+    txt: "txt",
+    md: "md",
+  };
+
+  return typeMap[ext] ?? "txt";
+}
+
+function normalizeBackendFileType(fileType: string): FileType {
+  if (fileType === "md") return "md";
+  if (fileType === "pdf") return "pdf";
+  if (fileType === "docx") return "docx";
+  if (fileType === "txt") return "txt";
+  return "txt";
+}
+
+function mapBackendFileItem(item: BackendFileItem): DocFile {
+  return {
+    id: item.file_id,
+    name: item.file_name,
+    type: normalizeBackendFileType(item.file_type),
+    size: 0,
+    status: item.status as FileStatus,
+    chunkCount: item.chunk_count,
+    uploadedAt: new Date(),
+  };
+}
 function formatBytes(b: number) {
   if (b < 1024)       return `${b} B`;
   if (b < 1048576)    return `${(b / 1024).toFixed(1)} KB`;
@@ -59,6 +87,7 @@ function getTypeInfo(type: FileType): { icon: string; bg: string; label: string 
     audio: { icon: "/icon/icon-audio.svg", bg: "rgba(245,158,11,.15)",  label: "Audio" },
     image: { icon: "/icon/icon-image.svg", bg: "rgba(45,212,191,.15)",  label: "Image" },
     txt:   { icon: "/icon/icon-txt.svg",   bg: "rgba(74,222,128,.15)",  label: "Text"  },
+    md:    { icon: "/icon/icon-txt.svg",   bg: "rgba(74,222,128,.15)",  label: "Markdown" },
   };
   return map[type];
 }
@@ -270,7 +299,7 @@ function FileRow({ file, selected, onSelect, onClick }: {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function FilesPage() {
-  const [files, setFiles]           = useState<DocFile[]>(SEED_FILES);
+  const [files, setFiles]           = useState<DocFile[]>([]);
   const [selected, setSelected]     = useState<Set<string>>(new Set());
   const [search, setSearch]         = useState("");
   const [typeFilter, setTypeFilter] = useState<FileType | "all">("all");
@@ -278,6 +307,19 @@ export default function FilesPage() {
   const [sortAsc, setSortAsc]       = useState(false);
   const [detailFile, setDetailFile] = useState<DocFile | null>(null);
   const [activeTab, setActiveTab]   = useState<"list" | "upload">("list");
+
+  useEffect(() => {
+    async function loadFiles() {
+      try {
+        const remoteFiles = await listFiles();
+        setFiles(remoteFiles.map(mapBackendFileItem));
+      } catch (error) {
+        console.error("Không thể tải danh sách file:", error);
+      }
+    }
+
+    loadFiles();
+  }, []);
 
   // ─── Filtering + sorting
   const visible = files
@@ -314,61 +356,78 @@ export default function FilesPage() {
     else setSelected(new Set(visible.map(f => f.id)));
   };
 
-  const deleteFile = (id: string) => setFiles(prev => prev.filter(f => f.id !== id));
+  const deleteFile = async (id: string) => {
+    try {
+      await deleteBackendFile(id);
+    } catch (error) {
+      console.error("Lỗi xóa file:", error);
+    }
 
-  const deleteSelected = () => {
+    setFiles(prev => prev.filter(f => f.id !== id));
+    setSelected(prev => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
+  };
+
+  const deleteSelected = async () => {
+    const ids = Array.from(selected);
+    await Promise.all(ids.map(async fileId => {
+      try {
+        await deleteBackendFile(fileId);
+      } catch (error) {
+        console.error("Lỗi xóa file:", fileId, error);
+      }
+    }));
+
     setFiles(prev => prev.filter(f => !selected.has(f.id)));
     setSelected(new Set());
   };
 
-  // Simulate adding files from drop zone
-  const handleDrop = (fileList: FileList) => {
-    const newFiles: DocFile[] = Array.from(fileList).map(f => {
-      const ext = f.name.split(".").pop()?.toLowerCase() ?? "";
-      const typeMap: Record<string, FileType> = {
-        pdf: "pdf", docx: "docx", doc: "docx", pptx: "pptx",
-        mp3: "audio", m4a: "audio", wav: "audio",
-        jpg: "image", jpeg: "image", png: "image", webp: "image",
-        txt: "txt",
-      };
+  const handleDrop = async (fileList: FileList) => {
+    const filesToUpload = Array.from(fileList);
+    if (filesToUpload.length === 0) return;
+
+    const newFiles: DocFile[] = filesToUpload.map(file => {
+      const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
       return {
-        id: `f${Date.now()}_${Math.random()}`,
-        name: f.name,
-        type: typeMap[ext] ?? "txt",
-        size: f.size,
-        status: "uploading" as FileStatus,
-        progress: 0,
+        id: `tmp_${Date.now()}_${Math.random().toString(16).slice(2)}`,
+        name: file.name,
+        type: mapExtensionToFileType(ext),
+        size: file.size,
+        status: "uploading",
         uploadedAt: new Date(),
       };
     });
-    setFiles(prev => [...newFiles, ...prev]);
 
-    // Simulate upload → indexing
-    newFiles.forEach(nf => {
-      let prog = 0;
-      const iv = setInterval(() => {
-        prog += Math.floor(Math.random() * 15) + 5;
-        if (prog >= 100) {
-          clearInterval(iv);
-          setFiles(prev => prev.map(f => f.id === nf.id ? { ...f, status: "indexing", progress: 0 } : f));
-          let iprog = 0;
-          const iv2 = setInterval(() => {
-            iprog += Math.floor(Math.random() * 10) + 3;
-            if (iprog >= 100) {
-              clearInterval(iv2);
-              setFiles(prev => prev.map(f => f.id === nf.id
-                ? { ...f, status: "ready", progress: undefined, chunkCount: Math.floor(nf.size / 3000) }
-                : f));
-            } else {
-              setFiles(prev => prev.map(f => f.id === nf.id ? { ...f, progress: Math.min(iprog, 99) } : f));
-            }
-          }, 300);
-        } else {
-          setFiles(prev => prev.map(f => f.id === nf.id ? { ...f, progress: Math.min(prog, 99) } : f));
-        }
-      }, 200);
-    });
+    setFiles(prev => [...newFiles, ...prev]);
     setActiveTab("list");
+
+    for (let index = 0; index < filesToUpload.length; index += 1) {
+      const file = filesToUpload[index];
+      const placeholder = newFiles[index];
+
+      try {
+        const result = await uploadFile(file);
+        setFiles(prev => prev.map(f => f.id === placeholder.id ? {
+          ...f,
+          id: result.file_id,
+          name: result.file_name,
+          type: normalizeBackendFileType(result.file_type),
+          chunkCount: result.chunk_count,
+          status: result.status as FileStatus,
+          error: result.error,
+        } : f));
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Lỗi upload file.";
+        setFiles(prev => prev.map(f => f.id === placeholder.id ? {
+          ...f,
+          status: "error",
+          error: message,
+        } : f));
+      }
+    }
   };
 
   // Stats
@@ -459,26 +518,12 @@ export default function FilesPage() {
       {/* ── UPLOAD TAB ── */}
       {activeTab === "upload" && (
         <div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 16, marginBottom: 24 }}>
             <DropZone
-              accept=".pdf,.docx,.doc,.pptx,.txt"
+              accept=".pdf,.docx,.doc,.txt,.md"
               icon={<img src="/icon/txt.png" alt="" style={{ width: 40, height: 40, objectFit: "contain" }} />}
-              label="Văn bản"
-              hint="PDF · DOCX · PPTX · TXT · tối đa 50MB"
-              onDrop={handleDrop}
-            />
-            <DropZone
-              accept=".mp3,.m4a,.wav,.ogg"
-              icon={<img src="/icon/mic.png" alt="" style={{ width: 40, height: 40, objectFit: "contain" }} />}
-              label="Ghi âm bài giảng"
-              hint="MP3 · M4A · WAV → Whisper transcript"
-              onDrop={handleDrop}
-            />
-            <DropZone
-              accept=".jpg,.jpeg,.png,.webp"
-              icon={<img src="/icon/cam.png" alt="" style={{ width: 40, height: 40, objectFit: "contain" }} />}
-              label="Ảnh chụp tài liệu"
-              hint="JPG · PNG · WEBP → OCR / Vision API"
+              label="Tài liệu văn bản"
+              hint="PDF · DOCX · TXT · MD · tối đa 50MB"
               onDrop={handleDrop}
             />
           </div>

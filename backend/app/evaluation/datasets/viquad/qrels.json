@@ -1,0 +1,502 @@
+[
+  {
+    "query_id": "q_00000",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00001",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00002",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00003",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00004",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00005",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00006",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00007",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00008",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00009",
+    "chunk_id": "chunk_00000",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00010",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00011",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00012",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00013",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00014",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00015",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00016",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00017",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00018",
+    "chunk_id": "chunk_00001",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00019",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00020",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00021",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00022",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00023",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00024",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00025",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00026",
+    "chunk_id": "chunk_00002",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00027",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00028",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00029",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00030",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00031",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00032",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00033",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00034",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00035",
+    "chunk_id": "chunk_00003",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00036",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00037",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00038",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00039",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00040",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00041",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00042",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00043",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00044",
+    "chunk_id": "chunk_00004",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00045",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00046",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00047",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00048",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00049",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00050",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00051",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00052",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00053",
+    "chunk_id": "chunk_00005",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00054",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00055",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00056",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00057",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00058",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00059",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00060",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00061",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00062",
+    "chunk_id": "chunk_00006",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00063",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00064",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00065",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00066",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00067",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00068",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00069",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00070",
+    "chunk_id": "chunk_00007",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00071",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00072",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00073",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00074",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00075",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00076",
+    "chunk_id": "chunk_00008",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00077",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00078",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00079",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00080",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00081",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00082",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00083",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00084",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00085",
+    "chunk_id": "chunk_00009",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00086",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00087",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00088",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00089",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00090",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00091",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00092",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00093",
+    "chunk_id": "chunk_00010",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00094",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00095",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00096",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00097",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00098",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  },
+  {
+    "query_id": "q_00099",
+    "chunk_id": "chunk_00011",
+    "relevance": 1
+  }
+]

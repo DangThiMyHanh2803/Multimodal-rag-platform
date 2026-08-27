@@ -48,15 +48,6 @@ export default function LoginPage({ onLogin, onNavigateRegister }: LoginPageProp
 
     setLoading(true);
     try {
-      // TODO: gọi POST /api/auth/login
-      // const res = await fetch("/api/auth/login", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email: form.email, password: form.password }),
-      // });
-      // if (!res.ok) throw new Error("Sai email hoặc mật khẩu");
-      // const { access_token } = await res.json();
-      // localStorage.setItem("token", access_token);
       await new Promise(r => setTimeout(r, 1200)); // demo delay
       onLogin?.(form.email);
     } catch {
@@ -67,8 +58,6 @@ export default function LoginPage({ onLogin, onNavigateRegister }: LoginPageProp
   };
 
   const handleGoogle = () => {
-    // TODO: redirect sang Google OAuth
-    // window.location.href = "/api/auth/google";
     alert("Google OAuth — chưa cấu hình");
   };
 
@@ -130,7 +119,7 @@ export default function LoginPage({ onLogin, onNavigateRegister }: LoginPageProp
                 <button
                   type="button"
                   style={{ fontSize: 12, color: C.accent, background: "none", border: "none", cursor: "pointer" }}
-                  onClick={() => {/* TODO: navigate to forgot password */}}
+                  onClick={() => {}}
                 >
                   Quên mật khẩu?
                 </button>

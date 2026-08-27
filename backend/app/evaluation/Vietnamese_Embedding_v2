@@ -1,0 +1,26 @@
+from sentence_transformers import SentenceTransformer
+
+model_name = "AITeamVN/Vietnamese_Embedding_v2"
+
+print(f"Đang tải model: {model_name}")
+
+model = SentenceTransformer(model_name)
+
+print("Tải model thành công!")
+print("Embedding dimension:", model.get_embedding_dimension())
+
+texts = [
+    "Thuật thôi miên cảm xúc là gì?",
+    "Tính cách của con người được hình thành như thế nào?",
+    "Khả năng thuyết phục có vai trò gì?"
+]
+
+embeddings = model.encode(
+    texts,
+    normalize_embeddings=True,
+    show_progress_bar=True
+)
+
+print("Số lượng text:", len(texts))
+print("Shape:", embeddings.shape)
+print("10 giá trị đầu tiên:", embeddings[0][:10])

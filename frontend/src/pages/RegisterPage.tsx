@@ -120,20 +120,6 @@ export default function RegisterPage({ onRegister, onNavigateLogin }: RegisterPa
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setLoading(true);
     try {
-      // TODO: POST /api/auth/register
-      // const res = await fetch("/api/auth/register", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     full_name: form.fullName,
-      //     email: form.email,
-      //     password: form.password,
-      //   }),
-      // });
-      // if (!res.ok) {
-      //   const data = await res.json();
-      //   throw new Error(data.detail ?? "Đăng ký thất bại");
-      // }
       await new Promise(r => setTimeout(r, 1400)); // demo
       onRegister?.(form.email);
     } catch (err: unknown) {

@@ -1,0 +1,411 @@
+[
+  {
+    "id": "q_00001",
+    "text": "RAG được đề xuất sử dụng trong hệ thống hỏi đáp tài liệu như thế nào?"
+  },
+  {
+    "id": "q_00002",
+    "text": "Pipeline của hệ thống RAG được đề xuất gồm những bước nào?"
+  },
+  {
+    "id": "q_00003",
+    "text": "Chunking có vai trò gì trong hệ thống RAG?"
+  },
+  {
+    "id": "q_00004",
+    "text": "Trong cấu hình RAG được đề xuất, chunk_size và chunk_overlap được đặt lần lượt là bao nhiêu?"
+  },
+  {
+    "id": "q_00005",
+    "text": "RecursiveCharacterTextSplitter được sử dụng để làm gì?"
+  },
+  {
+    "id": "q_00006",
+    "text": "Những mô hình embedding nào được đề xuất trong tài liệu?"
+  },
+  {
+    "id": "q_00007",
+    "text": "ChromaDB và FAISS được đề xuất sử dụng với vai trò gì?"
+  },
+  {
+    "id": "q_00008",
+    "text": "Mô hình ngôn ngữ nào được đề xuất sử dụng thông qua API cho hệ thống RAG?"
+  },
+  {
+    "id": "q_00009",
+    "text": "LangChain hoặc LlamaIndex được sử dụng ở vị trí nào trong hệ thống?"
+  },
+  {
+    "id": "q_00010",
+    "text": "Ragas được sử dụng để đánh giá hệ thống RAG bằng những chỉ số nào?"
+  },
+  {
+    "id": "q_00011",
+    "text": "Faithfulness dùng để đánh giá khía cạnh nào của câu trả lời?"
+  },
+  {
+    "id": "q_00012",
+    "text": "Answer Relevance dùng để đánh giá điều gì?"
+  },
+  {
+    "id": "q_00013",
+    "text": "Theo tài liệu, RAG khác với trường hợp AI trả lời không có RAG như thế nào?"
+  },
+  {
+    "id": "q_00014",
+    "text": "Thực nghiệm về chunk size được đề xuất so sánh những kích thước đoạn văn nào?"
+  },
+  {
+    "id": "q_00015",
+    "text": "Bài báo Benchmarking Large Language Models on RAG Tasks tập trung phân tích những yếu tố nào ảnh hưởng đến câu trả lời?"
+  },
+  {
+    "id": "q_00016",
+    "text": "Bài báo Investigating Recent Large Language Models for Vietnamese Machine Reading Comprehension nghiên cứu vấn đề gì?"
+  },
+  {
+    "id": "q_00017",
+    "text": "Hai mô hình Llama 3 và Gemma được đánh giá trên tập dữ liệu tiếng Việt nào?"
+  },
+  {
+    "id": "q_00018",
+    "text": "Theo corpus, QLoRA được đề cập với mục đích gì khi nghiên cứu các mô hình đọc hiểu tiếng Việt?"
+  },
+  {
+    "id": "q_00019",
+    "text": "Reranker được đề xuất nhằm giải quyết hạn chế nào của việc tìm kiếm bằng vector?"
+  },
+  {
+    "id": "q_00020",
+    "text": "BGE Reranker được đưa vào pipeline RAG ở bước nào?"
+  },
+
+  {
+    "id": "q_00021",
+    "text": "BabyShop hỗ trợ những phương thức thanh toán nào?"
+  },
+  {
+    "id": "q_00022",
+    "text": "BabyShop sử dụng những công nghệ nào ở phía frontend?"
+  },
+  {
+    "id": "q_00023",
+    "text": "BabyShop sử dụng những công nghệ nào ở phía backend?"
+  },
+  {
+    "id": "q_00024",
+    "text": "Kiến trúc MVC trong hệ thống BabyShop được sử dụng như thế nào?"
+  },
+  {
+    "id": "q_00025",
+    "text": "VNPay Sandbox được tích hợp vào BabyShop để thực hiện chức năng gì?"
+  },
+  {
+    "id": "q_00026",
+    "text": "Chức năng giỏ hàng của BabyShop hỗ trợ những thao tác nào?"
+  },
+  {
+    "id": "q_00027",
+    "text": "Người dùng có thể thực hiện những thao tác gì với lịch sử đặt hàng?"
+  },
+  {
+    "id": "q_00028",
+    "text": "Giao diện BabyShop hỗ trợ responsive trên những thiết bị nào?"
+  },
+
+  {
+    "id": "q_00029",
+    "text": "Theo Tử Huyệt Cảm Xúc, việc đặt câu hỏi có vai trò gì trong giao tiếp?"
+  },
+  {
+    "id": "q_00030",
+    "text": "Kỹ năng đặt câu hỏi Thôi Miên Cảm Xúc mang lại những lợi ích gì?"
+  },
+  {
+    "id": "q_00031",
+    "text": "Theo tài liệu, vì sao câu hỏi được xem là công cụ hiệu quả để thu hút sự chú ý?"
+  },
+  {
+    "id": "q_00032",
+    "text": "Sáu Nguyên Tắc Đặt Câu Hỏi Thôi Miên được đề cập nhằm mục đích gì?"
+  },
+  {
+    "id": "q_00033",
+    "text": "Theo Tử Huyệt Cảm Xúc, lắng nghe hiệu quả có ý nghĩa như thế nào trong giao tiếp?"
+  },
+  {
+    "id": "q_00034",
+    "text": "Trong một cuộc phỏng vấn, tại sao người tham gia được khuyên nên quan sát và lắng nghe nhà tuyển dụng?"
+  },
+  {
+    "id": "q_00035",
+    "text": "Theo tài liệu, người tham gia phỏng vấn có thể sử dụng câu hỏi để dẫn dắt cuộc trò chuyện như thế nào?"
+  },
+  {
+    "id": "q_00036",
+    "text": "Bộ Tứ Tử Huyệt Cảm Xúc được sử dụng như thế nào trong giao tiếp?"
+  },
+  {
+    "id": "q_00037",
+    "text": "Theo Tử Huyệt Cảm Xúc, vì sao hình thức bên ngoài cần phù hợp với nhu cầu cảm xúc của khán giả?"
+  },
+  {
+    "id": "q_00038",
+    "text": "Theo tài liệu, việc chỉ đưa quá nhiều thông tin khô khan vào bài nói chuyện có thể gây ra vấn đề gì?"
+  },
+
+  {
+    "id": "q_00039",
+    "text": "Theo Hành Trình Về Phương Đông, mục đích của Yoga có phải là biểu diễn những điều kỳ lạ để được người khác kính phục không?"
+  },
+  {
+    "id": "q_00040",
+    "text": "Theo Hành Trình Về Phương Đông, vì sao các giáo lý Yoga bí truyền không được đem rao bán công khai?"
+  },
+  {
+    "id": "q_00041",
+    "text": "Hatha Yoga được mô tả trong tài liệu hướng đến việc chủ trị điều gì trước?"
+  },
+  {
+    "id": "q_00042",
+    "text": "Phái đoàn khoa học trong Hành Trình Về Phương Đông đã kiểm chứng các sự kiện được ghi nhận như thế nào?"
+  },
+  {
+    "id": "q_00043",
+    "text": "Theo Hành Trình Về Phương Đông, phái đoàn khoa học đã sử dụng những phương pháp nào để đảm bảo tính chính xác của tài liệu?"
+  },
+  {
+    "id": "q_00044",
+    "text": "Theo Hành Trình Về Phương Đông, hạnh phúc có phụ thuộc vào những sự vật bên ngoài hay không?"
+  },
+  {
+    "id": "q_00045",
+    "text": "Tài liệu giải thích sự khác nhau giữa hạnh phúc và khoái cảm như thế nào?"
+  },
+  {
+    "id": "q_00046",
+    "text": "Theo Hành Trình Về Phương Đông, vì sao khoái cảm không thể được xem là hạnh phúc lâu bền?"
+  },
+  {
+    "id": "q_00047",
+    "text": "Theo tài liệu, vì sao người giàu có nhiều của cải chưa chắc hạnh phúc hơn người nghèo?"
+  },
+  {
+    "id": "q_00048",
+    "text": "Theo Hành Trình Về Phương Đông, đặc tính của hạnh phúc được mô tả như thế nào?"
+  },
+  {
+    "id": "q_00049",
+    "text": "Theo Hành Trình Về Phương Đông, khoái cảm được giải thích là phản ứng của con người trước điều gì?"
+  },
+  {
+    "id": "q_00050",
+    "text": "Theo tài liệu, cùng một sự vật có thể tạo ra những cảm xúc khác nhau như thế nào?"
+  },
+
+  {
+    "id": "q_00051",
+    "text": "Trong hệ thống RAG, tài liệu PDF được xử lý ở bước nào trước khi thực hiện embedding?"
+  },
+  {
+    "id": "q_00052",
+    "text": "Sau khi văn bản được chunking, bước xử lý tiếp theo trong pipeline RAG là gì?"
+  },
+  {
+    "id": "q_00053",
+    "text": "Retrieval có vai trò gì trong pipeline của hệ thống RAG?"
+  },
+  {
+    "id": "q_00054",
+    "text": "Sau bước Retrieval, mô hình LLM thực hiện nhiệm vụ gì?"
+  },
+  {
+    "id": "q_00055",
+    "text": "Kết quả cuối cùng của pipeline RAG được tạo ra từ những thành phần nào?"
+  },
+  {
+    "id": "q_00056",
+    "text": "Tại sao tài liệu đề xuất sử dụng chunk overlap khi chia văn bản?"
+  },
+  {
+    "id": "q_00057",
+    "text": "Chunk size ảnh hưởng như thế nào đến chất lượng của hệ thống RAG theo hướng thực nghiệm được đề xuất?"
+  },
+  {
+    "id": "q_00058",
+    "text": "Vị trí của thông tin trong tài liệu được xem là yếu tố ảnh hưởng đến điều gì trong hệ thống RAG?"
+  },
+  {
+    "id": "q_00059",
+    "text": "Thực nghiệm RAG được đề xuất nhằm tìm hiểu những yếu tố nào giúp cải thiện độ chính xác của câu trả lời?"
+  },
+  {
+    "id": "q_00060",
+    "text": "Tại sao cần đánh giá hệ thống RAG thay vì chỉ kiểm tra câu trả lời bằng cách quan sát thủ công?"
+  },
+
+  {
+    "id": "q_00061",
+    "text": "Theo tài liệu, LangChain được sử dụng để xây dựng thành phần nào của hệ thống?"
+  },
+  {
+    "id": "q_00062",
+    "text": "HuggingFace được sử dụng trong hệ thống RAG để hỗ trợ thành phần nào?"
+  },
+  {
+    "id": "q_00063",
+    "text": "Các mô hình embedding được đề xuất có thể chạy trực tiếp trên phần cứng nào?"
+  },
+  {
+    "id": "q_00064",
+    "text": "Vì sao ChromaDB hoặc FAISS được xem là thuận tiện cho bài tiểu luận?"
+  },
+  {
+    "id": "q_00065",
+    "text": "SiliconFlow hoặc Groq Cloud được đề xuất sử dụng để cung cấp dịch vụ gì?"
+  },
+  {
+    "id": "q_00066",
+    "text": "Qwen 2.5 được sử dụng ở thành phần nào trong kiến trúc RAG?"
+  },
+  {
+    "id": "q_00067",
+    "text": "Theo tài liệu, những mô hình ngôn ngữ nào có thể được sử dụng thông qua API miễn phí hoặc giá rẻ?"
+  },
+  {
+    "id": "q_00068",
+    "text": "Tài liệu đề xuất những framework Python nào để quản lý hệ thống RAG?"
+  },
+  {
+    "id": "q_00069",
+    "text": "Vector database lưu trữ loại dữ liệu nào trong hệ thống RAG?"
+  },
+  {
+    "id": "q_00070",
+    "text": "Embedding giúp hệ thống tìm kiếm thông tin trong tài liệu theo cách nào?"
+  },
+
+  {
+    "id": "q_00071",
+    "text": "Trong thực nghiệm được đề xuất, hệ thống có RAG được kỳ vọng khác hệ thống không có RAG ở điểm nào?"
+  },
+  {
+    "id": "q_00072",
+    "text": "Theo tài liệu, hệ thống không có RAG có thể gặp vấn đề gì khi trả lời câu hỏi?"
+  },
+  {
+    "id": "q_00073",
+    "text": "Hệ thống có RAG có thể dựa vào thông tin nào để tạo câu trả lời?"
+  },
+  {
+    "id": "q_00074",
+    "text": "Việc trích dẫn chính xác chương hoặc mục trong tài liệu có ý nghĩa gì đối với hệ thống hỏi đáp?"
+  },
+  {
+    "id": "q_00075",
+    "text": "Faithfulness và Answer Relevance khác nhau như thế nào trong đánh giá RAG?"
+  },
+
+  {
+    "id": "q_00076",
+    "text": "Theo Tử Huyệt Cảm Xúc, câu hỏi có thể được sử dụng để mở đầu một cuộc trò chuyện như thế nào?"
+  },
+  {
+    "id": "q_00077",
+    "text": "Theo tài liệu, đặt câu hỏi có thể hỗ trợ việc thiết lập các mối quan hệ như thế nào?"
+  },
+  {
+    "id": "q_00078",
+    "text": "Kỹ năng đặt câu hỏi có thể giúp một người xử lý những tình huống giao tiếp khó khăn như thế nào?"
+  },
+  {
+    "id": "q_00079",
+    "text": "Theo Tử Huyệt Cảm Xúc, tại sao cần tập trung lắng nghe khi giao tiếp?"
+  },
+  {
+    "id": "q_00080",
+    "text": "Những câu hỏi Thôi Miên Cảm Xúc được đặt đúng thời điểm có tác dụng gì đối với người nghe?"
+  },
+  {
+    "id": "q_00081",
+    "text": "Theo tài liệu, các câu hỏi có thể tác động đến khả năng thuyết phục của người nói như thế nào?"
+  },
+  {
+    "id": "q_00082",
+    "text": "Theo Tử Huyệt Cảm Xúc, tại sao người giao tiếp cần quan sát cả biểu cảm và hành vi của đối phương?"
+  },
+  {
+    "id": "q_00083",
+    "text": "Trong một buổi phỏng vấn, những dấu hiệu nào có thể được quan sát từ nhà tuyển dụng?"
+  },
+  {
+    "id": "q_00084",
+    "text": "Theo tài liệu, người phỏng vấn có thể thể hiện sự mất tập trung thông qua những dấu hiệu nào?"
+  },
+  {
+    "id": "q_00085",
+    "text": "Sau khi quan sát nhà tuyển dụng, người tham gia phỏng vấn được khuyên nên làm gì?"
+  },
+
+  {
+    "id": "q_00086",
+    "text": "Theo Tử Huyệt Cảm Xúc, tại sao không nên chỉ ngồi trả lời câu hỏi một cách thụ động trong phỏng vấn?"
+  },
+  {
+    "id": "q_00087",
+    "text": "Người tham gia phỏng vấn có thể sử dụng câu trả lời của nhà tuyển dụng để dẫn dắt câu hỏi tiếp theo như thế nào?"
+  },
+  {
+    "id": "q_00088",
+    "text": "Theo tài liệu, việc chủ động đặt câu hỏi trong phỏng vấn có thể mang lại lợi ích gì?"
+  },
+  {
+    "id": "q_00089",
+    "text": "Theo Tử Huyệt Cảm Xúc, vì sao cần làm cho người nghe thực sự chú ý và lắng nghe?"
+  },
+  {
+    "id": "q_00090",
+    "text": "Thuật Thôi Miên Cảm Xúc được mô tả có thể hỗ trợ việc điều phối giao tiếp và phỏng vấn như thế nào?"
+  },
+
+  {
+    "id": "q_00091",
+    "text": "Theo Hành Trình Về Phương Đông, tại sao một danh sư không cần quảng cáo rầm rộ?"
+  },
+  {
+    "id": "q_00092",
+    "text": "Theo tài liệu, một danh sư lựa chọn đệ tử dựa trên nguyên tắc nào?"
+  },
+  {
+    "id": "q_00093",
+    "text": "Tại sao các phương pháp Yoga bí truyền được cho là nguy hiểm đối với người chưa đủ khả năng?"
+  },
+  {
+    "id": "q_00094",
+    "text": "Theo Hành Trình Về Phương Đông, người muốn học các giáo lý bí truyền cần làm gì?"
+  },
+  {
+    "id": "q_00095",
+    "text": "Theo tài liệu, vì sao Yoga chân chính không nên được sử dụng như một trò biểu diễn?"
+  },
+  {
+    "id": "q_00096",
+    "text": "Phái đoàn khoa học trong Hành Trình Về Phương Đông đã ghi chép các sự kiện quan sát được như thế nào?"
+  },
+  {
+    "id": "q_00097",
+    "text": "Sau khi mỗi thành viên ghi chép riêng, phái đoàn khoa học đã thực hiện bước nào để kiểm chứng thông tin?"
+  },
+  {
+    "id": "q_00098",
+    "text": "Theo Hành Trình Về Phương Đông, phương pháp kiểm chứng của phái đoàn nhằm tránh dựa trên điều gì?"
+  },
+  {
+    "id": "q_00099",
+    "text": "Theo tài liệu, mục tiêu của việc kiểm chứng các hiện tượng được quan sát là gì?"
+  },
+  {
+    "id": "q_00100",
+    "text": "Theo Hành Trình Về Phương Đông, kết quả nghiên cứu của phái đoàn được kỳ vọng tạo ra cầu nối giữa những nền văn hóa nào?"
+  }
+]

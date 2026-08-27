@@ -1,0 +1,402 @@
+[
+  {
+    "id": "q_00000",
+    "text": "Biển nào tiếp giáp với bang California?"
+  },
+  {
+    "id": "q_00001",
+    "text": "Sacramento toạ lạc ở đâu trong lãnh thổ tiểu bang?"
+  },
+  {
+    "id": "q_00002",
+    "text": "Diện tích tiểu bang lớn thứ ba ở Hoa Kỳ là bao nhiêu ?"
+  },
+  {
+    "id": "q_00003",
+    "text": "Khu vực thủ phủ của bang California nằm ở đâu?"
+  },
+  {
+    "id": "q_00004",
+    "text": "Vị trí địa lý của thành phố San Diego nằm ở bang nào nước Mỹ?"
+  },
+  {
+    "id": "q_00005",
+    "text": "California có đường biên giới chung với khu vực nào thuộc Đức?"
+  },
+  {
+    "id": "q_00006",
+    "text": "Los Angeles nằm ở đâu trong lãnh thổ tiểu bang?"
+  },
+  {
+    "id": "q_00007",
+    "text": "Tiểu bang lớn thứ ba ở Mexico có diện tích là bao nhiêu?"
+  },
+  {
+    "id": "q_00008",
+    "text": "Bang nào của Mexico có biên giới chung với bang California?"
+  },
+  {
+    "id": "q_00009",
+    "text": "Nơi nào tập trung các sa mạc lớn của tiểu bang California?"
+  },
+  {
+    "id": "q_00010",
+    "text": "Phía nam thung lũng Trung tâm được bao bọc bởi dãy núi nào?"
+  },
+  {
+    "id": "q_00011",
+    "text": "Hãy cho biết vai trò của vùng châu thổ vịng Sacramento?"
+  },
+  {
+    "id": "q_00012",
+    "text": "Dãy núi nào nằm ở phía đông thung lũng Trung tâm?"
+  },
+  {
+    "id": "q_00013",
+    "text": "Dãy núi vịnh Sacramento – San Joaquin có tầm quan trọng to lớn như thế nào?"
+  },
+  {
+    "id": "q_00014",
+    "text": "Đối diện với dãy núi Cascade theo hướng nam là dãy núi nào?"
+  },
+  {
+    "id": "q_00015",
+    "text": "Thời tiết gây ảnh hưởng như thế nào đối với việc sản xuất nông nghiệp trong thung lũng trung tâm?"
+  },
+  {
+    "id": "q_00016",
+    "text": "Những khó khăn về thời tiết ảnh hưởng đến sản xuất nông nghiệp trong thung lũng phía tây là gì?"
+  },
+  {
+    "id": "q_00017",
+    "text": "Vì sao phải nạo vét lòng sông ở California?"
+  },
+  {
+    "id": "q_00018",
+    "text": "Dự án Nguồn nước từ thung lũng trung tâm dùng cho mục đích gì?"
+  },
+  {
+    "id": "q_00019",
+    "text": "Độ cao của dãy Sierra là bao nhiêu?"
+  },
+  {
+    "id": "q_00020",
+    "text": "Đỉnh Whitney cao bao nhiêu so với mực nước biển?"
+  },
+  {
+    "id": "q_00021",
+    "text": "Sinh vật nào thường sinh sống tập tring quanh hồ Môn?"
+  },
+  {
+    "id": "q_00022",
+    "text": "Dãy núi Sierra Nevada nằm giữa hồ Mono và hồ gì?"
+  },
+  {
+    "id": "q_00023",
+    "text": "Hồ nước ngọt nào lớn nhất ở California?"
+  },
+  {
+    "id": "q_00024",
+    "text": "Hãy cho biết vị trí địa lý của sông băng Palisade trong lãnh thổ nước Mỹ?"
+  },
+  {
+    "id": "q_00025",
+    "text": "Hồ nước ngọt lớn nhất California nằm ở đâu?"
+  },
+  {
+    "id": "q_00026",
+    "text": "Sông băng Palisade nằm ở phía nào của lãnh thổ Tây Ban Nha?"
+  },
+  {
+    "id": "q_00027",
+    "text": "Khu vực nào của tiểu bang tập trung đa phần diện tích núi?"
+  },
+  {
+    "id": "q_00028",
+    "text": "Bao nhiêu phần trăm diện tích California là núi?"
+  },
+  {
+    "id": "q_00029",
+    "text": "Diện tích rừng tập trung chủ yếu ở đâu?"
+  },
+  {
+    "id": "q_00030",
+    "text": "Hãy cho biết tên khu vực có diện tích rừng lớn nhất ở Mỹ?"
+  },
+  {
+    "id": "q_00031",
+    "text": "Rừng sồi phân bố chủ yếu ở đâu trong tiểu bang?"
+  },
+  {
+    "id": "q_00032",
+    "text": "Loài thực vật nào chiếm đa số ở California?"
+  },
+  {
+    "id": "q_00033",
+    "text": "Ở Mỹ bang nào có diện tích rừng lớn nhất?"
+  },
+  {
+    "id": "q_00034",
+    "text": "Rừng bao phủ bao nhiêu diện tích ở California?"
+  },
+  {
+    "id": "q_00035",
+    "text": "Những rừng sồi phân bố ở khu vực nào của dãy núi?"
+  },
+  {
+    "id": "q_00036",
+    "text": "Hồ nước mặn nào tọa lạc ở miền đông nam California?"
+  },
+  {
+    "id": "q_00037",
+    "text": "Nhiệt độ vào mùa hè ở thung lũng Imperial và Coachella như thế nào?"
+  },
+  {
+    "id": "q_00038",
+    "text": "Điểm thấp nhất mà khoảng cách từ nó tới đỉnh núi Whitney là hơn 322 km toạ lạc ở đâu so với sa mạc Mojave?"
+  },
+  {
+    "id": "q_00039",
+    "text": "Bao nhiêu phần trăm diện tích California là biển?"
+  },
+  {
+    "id": "q_00040",
+    "text": "Sa mạc Mojave có đặc điểm gì nổi bật?"
+  },
+  {
+    "id": "q_00041",
+    "text": "Nam sa mạc Mojave có điều gì đặc biệt?"
+  },
+  {
+    "id": "q_00042",
+    "text": "Độ cao giữa đỉnh Whitney và đáy thung lũng chết là bao nhiêu?"
+  },
+  {
+    "id": "q_00043",
+    "text": "Hãy cho biết tên hồ nước mặn nằm ở miền nam California?"
+  },
+  {
+    "id": "q_00044",
+    "text": "Sa mạc chiếm bao nhiêu phần trăm tổng diện tích của bang California?"
+  },
+  {
+    "id": "q_00045",
+    "text": "Phương pháp ngoại giao của các dân tộc xưa tại California như thế nào?"
+  },
+  {
+    "id": "q_00046",
+    "text": "Những sự kết nối giữa những con thú biển xuất phát từ đâu?"
+  },
+  {
+    "id": "q_00047",
+    "text": "Hãy cho biết cách tổ chức các dân tộc tại bang California?"
+  },
+  {
+    "id": "q_00048",
+    "text": "Thú rừng sống trong nội địa kiếm ăn bằng cách nào?"
+  },
+  {
+    "id": "q_00049",
+    "text": "California là vùng có nền văn hóa như thế nào trước khi người Bắc Mỹ đến đây?"
+  },
+  {
+    "id": "q_00050",
+    "text": "Người dân ven biển sinh sống như thế nào?"
+  },
+  {
+    "id": "q_00051",
+    "text": "Hãy cho biết đặc điểm văn hoá của bang California trước khi người phương Tây đến ?"
+  },
+  {
+    "id": "q_00052",
+    "text": "Phương thức săn bắn của người dân trong đất liền là gì?"
+  },
+  {
+    "id": "q_00053",
+    "text": "Từ phía Tây đi sâu vô trung tâm thì người dân làm gì để sinh sống?"
+  },
+  {
+    "id": "q_00054",
+    "text": "Tên gọi California xuất phát từ đâu?"
+  },
+  {
+    "id": "q_00055",
+    "text": "Tổng diện tích Baja California và Alta California ngày nay được gọi là gì?"
+  },
+  {
+    "id": "q_00056",
+    "text": "Vùng nào thuộc khu vực California trước đó?"
+  },
+  {
+    "id": "q_00057",
+    "text": "Hãy cho biết tên địa danh bao phủ phần lớn lãnh thổ của California trước đó?"
+  },
+  {
+    "id": "q_00058",
+    "text": "Đa phần diện tích lãnh thổ Alta California ngày nay thuộc khu vực nào trong quá khứ?"
+  },
+  {
+    "id": "q_00059",
+    "text": "Vì sao California bị nhầm là một bán đảo vào thời xưa?"
+  },
+  {
+    "id": "q_00060",
+    "text": "Vì sao mọi người nghĩ rằng California là một đảo?"
+  },
+  {
+    "id": "q_00061",
+    "text": "Ai là người sáng tác tiểu thuyết Las sergas de Esplandián?"
+  },
+  {
+    "id": "q_00062",
+    "text": "Nguồn gốc của cái tên Utah xuất phát từ đâu?"
+  },
+  {
+    "id": "q_00063",
+    "text": "California chính thức thành đất của Mexico vào năm nào?"
+  },
+  {
+    "id": "q_00064",
+    "text": "Đế quốc Tây Ban Nha đô hộ California tại thời điểm nào?"
+  },
+  {
+    "id": "q_00065",
+    "text": "Rancho là chế độ dùng để chỉ về những thứ gì?"
+  },
+  {
+    "id": "q_00066",
+    "text": "Cư dân tại California trước thế kỷ 16 chủ yếu là ai?"
+  },
+  {
+    "id": "q_00067",
+    "text": "Từ \"Rancho\" dùng để chỉ điều gì?"
+  },
+  {
+    "id": "q_00068",
+    "text": "Sự kiện nào dẫn đến việc Tây Ban Nha làm chủ California?"
+  },
+  {
+    "id": "q_00069",
+    "text": "Nguyên nhân nào dẫn tới việc Mexico làm chủ California?"
+  },
+  {
+    "id": "q_00070",
+    "text": "Nguyên nhân nào dẫn đến những chuyển biến mạnh mẽ tạo California?"
+  },
+  {
+    "id": "q_00071",
+    "text": "Nhiệt độ cao tại California là điều kiện sinh trưởng cho sinh vật gây bệnh nào?"
+  },
+  {
+    "id": "q_00072",
+    "text": "Dịch bệnh ảnh hưởng ra sao đến mật độ dân số tại California?"
+  },
+  {
+    "id": "q_00073",
+    "text": "Mexico đã làm gì để ngăn chặn đột nhập trái phép vào California?"
+  },
+  {
+    "id": "q_00074",
+    "text": "Những dịch bệnh nào bùng phát mạnh tại California?"
+  },
+  {
+    "id": "q_00075",
+    "text": "Tại sao ít người sống trên đất của California?"
+  },
+  {
+    "id": "q_00076",
+    "text": "Vì sao Đế quốc Nga thất bại trong việc khai phá California?"
+  },
+  {
+    "id": "q_00077",
+    "text": "Vào chiến tranh Mỹ-Mexico thì Baja California Sur toạ lạc ở đâu trong bang California lúc bây giờ?"
+  },
+  {
+    "id": "q_00078",
+    "text": "Lãnh thổ Cộng hoà California xưa gồm những tiểu bang nào?"
+  },
+  {
+    "id": "q_00079",
+    "text": "Cờ Gấu có đặc điểm gì?"
+  },
+  {
+    "id": "q_00080",
+    "text": "Những tiểu bang nào được chia ra từ phần vịnh phía nam của Cộng hòa California ngày xưa?"
+  },
+  {
+    "id": "q_00081",
+    "text": "Sự kiện nào dẫn đến sự sụp đổ của Cộng hòa San Francisco?"
+  },
+  {
+    "id": "q_00082",
+    "text": "Chiến tranh Mỹ và Mexico diễn ra trong khoảng năm nào?"
+  },
+  {
+    "id": "q_00083",
+    "text": "Nguồn gốc của tiểu bang San Francisco ngày nay của Hoa Kỳ có từ đâu?"
+  },
+  {
+    "id": "q_00084",
+    "text": "Nền Cộng hoà California đã sụp đổ như thế nào?"
+  },
+  {
+    "id": "q_00085",
+    "text": "Hãy cho biết nguồn gốc của tiểu bang California?"
+  },
+  {
+    "id": "q_00086",
+    "text": "Giao thương Đông Tây được cải thiện nhờ đâu?"
+  },
+  {
+    "id": "q_00087",
+    "text": "Điều gì được phát hiện đã giúp bang California phát triển nông nghiệp tới bây giờ?"
+  },
+  {
+    "id": "q_00088",
+    "text": "Để di chuyển từ Tây sang Đông, người ta dùng phương tiện gì?"
+  },
+  {
+    "id": "q_00089",
+    "text": "Thổ nhưỡng vùng California thích hợp cho loại hình nông nghiệp nào?"
+  },
+  {
+    "id": "q_00090",
+    "text": "Các loại hoa màu nào được ưu tiên phát triển tại bang California?"
+  },
+  {
+    "id": "q_00091",
+    "text": "Vì sao giao thương giữa 2 miền Đông - Tây bị hạn chế?"
+  },
+  {
+    "id": "q_00092",
+    "text": "Những khó khăn nào cản trở việc đi bộ giữa hai miền Đông - Tây?"
+  },
+  {
+    "id": "q_00093",
+    "text": "Người dân California tập trung khám phá những loại cây ăn quả nào?"
+  },
+  {
+    "id": "q_00094",
+    "text": "Đặc điểm nào để kết luận rằng California có sự đa dạng về văn hoá?"
+  },
+  {
+    "id": "q_00095",
+    "text": "Bang nào có dân cư cao nhất trong các bang tại Hoa Kỳ?"
+  },
+  {
+    "id": "q_00096",
+    "text": "Số con đường của tiểu bang nào trong Liên bang là cao nhất năm 1965?"
+  },
+  {
+    "id": "q_00097",
+    "text": "Để bang California có số dân đông như vậy nhờ vào công trình naò?"
+  },
+  {
+    "id": "q_00098",
+    "text": "Những thuận lợi nào về nông nghiệp làm cho dân số California tăng mạnh ở đầu thế kỷ 20?"
+  },
+  {
+    "id": "q_00099",
+    "text": "Cơ sở hạ tầng giao thông trong thế kỷ 20 của bang California đã phát triển ra sao?"
+  }
+]

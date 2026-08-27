@@ -193,12 +193,6 @@ export default function SharedChatPage() {
     setInput("");
     setTyping(true);
 
-    // TODO: POST /api/shared/:token/ask
-    // const res = await fetch(`/api/shared/${token}/ask`, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ question: text }),
-    // });
     setTimeout(() => {
       setTyping(false);
       setMessages(prev => [...prev, {
